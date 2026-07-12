@@ -8,7 +8,10 @@ const Allocation = require("./model/allocation");
 const methodOverride = require("method-override");
 const bookingRoutes = require("./routes/bookings");
 const maintenanceRoutes=require("./routes/maintenances");
-
+const reportRoutes = require("./routes/reports");
+const authRoutes=require("./routes/auth");
+const session = require("express-session");
+const MongoStore = require("connect-mongo");
 
 
 main()
@@ -31,6 +34,25 @@ app.use(express.static(path.join(__dirname,"public")));
 app.use(methodOverride("_method"));
 app.use("/bookings", bookingRoutes);
 app.use("/maintenances",maintenanceRoutes);
+app.use("/reports", reportRoutes);
+app.use(session({
+
+    secret: "assetflowsecret",
+
+    resave: false,
+
+    saveUninitialized: false,
+
+   
+
+    cookie: {
+
+        maxAge: 1000 * 60 * 60 * 24
+
+    }
+
+}));
+app.use("/",authRoutes);
 
 
 app.get("/assets", async (req,res)=>{

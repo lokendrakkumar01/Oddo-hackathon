@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Dashboard</title>
+
+<style>
+
+body{
+
+font-family:Arial;
+background:#F4F2FF;
+text-align:center;
+padding-top:100px;
+
+}
+
+.card{
+
+width:500px;
+margin:auto;
+background:white;
+padding:40px;
+border-radius:15px;
+box-shadow:0 5px 15px rgba(0,0,0,.15);
+
+}
+
+h1{
+
+color:#6C63FF;
+
+}
+
+a{
+
+display:inline-block;
+margin-top:20px;
+padding:12px 25px;
+background:#6C63FF;
+color:white;
+text-decoration:none;
+border-radius:8px;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="card">
+
+<h1>
+
+Welcome <%= user.name %>
+
+</h1>
+
+<p>
+
+Email :
+<%= user.email %>
+
+</p>
+
+<a href="/logout">
+
+Logout
+
+</a>
+
+</div>
+
+</body>
+
+</html>
