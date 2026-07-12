@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asset Details</title>
+</head>
+<body>
+
+    <h1>Asset Details</h1>
+
+    <p><strong>Asset Tag:</strong> <%= asset.assetTag %></p>
+
+    <p><strong>Asset Name:</strong> <%= asset.assetName %></p>
+
+    <p><strong>Serial Number:</strong> <%= asset.serialNumber %></p>
+
+    <p><strong>Category:</strong> <%= asset.category %></p>
+
+    <p><strong>Status:</strong> <%= asset.status %></p>
+
+    <p><strong>Location:</strong> <%= asset.location %></p>
+
+    <p><strong>Condition:</strong> <%= asset.condition %></p>
+
+    <a href="/assets/<%= asset._id %>/edit">Edit</a>
+
+    <a href="/assets">Back</a>
+
+</body>
+</html>

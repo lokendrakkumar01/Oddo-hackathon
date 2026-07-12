@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Asset</title>
+</head>
+<body>
+
+    <h1>Add New Asset</h1>
+
+    <form action="/assets" method="POST">
+
+        <label>Asset Tag</label>
+        <input type="text" name="assetTag">
+
+        <br><br>
+
+        <label>Asset Name</label>
+        <input type="text" name="assetName">
+
+        <br><br>
+
+        <label>Serial Number</label>
+        <input type="text" name="serialNumber">
+
+        <br><br>
+
+        <label>Category</label>
+        <input type="text" name="category">
+
+        <br><br>
+
+        <label>Purchase Date</label>
+        <input type="date" name="purchaseDate">
+
+        <br><br>
+
+        <label>Location</label>
+        <input type="text" name="location">
+
+        <br><br>
+
+        <label>Condition</label>
+
+        <select name="condition">
+            <option>Excellent</option>
+            <option>Good</option>
+            <option>Fair</option>
+            <option>Poor</option>
+        </select>
+
+        <br><br>
+
+        <label>Status</label>
+
+        <select name="status">
+            <option>Available</option>
+            <option>Allocated</option>
+            <option>Reserved</option>
+            <option>Under Maintenance</option>
+        </select>
+
+        <br><br>
+
+        <button type="submit">Add Asset</button>
+
+    </form>
+
+</body>
+</html>

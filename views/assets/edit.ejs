@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Asset</title>
+</head>
+<body>
+
+    <h1>Edit Asset</h1>
+
+    <form action="/assets/<%= asset._id %>?_method=PUT" method="POST">
+
+        <label>Asset Tag</label>
+        <input type="text" name="assetTag" value="<%= asset.assetTag %>">
+
+        <br><br>
+
+        <label>Asset Name</label>
+        <input type="text" name="assetName" value="<%= asset.assetName %>">
+
+        <br><br>
+
+        <label>Category</label>
+        <input type="text" name="category" value="<%= asset.category %>">
+
+        <br><br>
+
+        <label>Status</label>
+
+        <select name="status">
+
+            <option value="Available">Available</option>
+
+            <option value="Allocated">Allocated</option>
+
+            <option value="Reserved">Reserved</option>
+
+            <option value="Under Maintenance">Under Maintenance</option>
+
+        </select>
+
+        <br><br>
+
+        <button type="submit">Update Asset</button>
+
+    </form>
+
+</body>
+</html>
