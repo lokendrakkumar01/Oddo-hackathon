@@ -5,6 +5,9 @@ const mongoose = require("mongoose");
 const Asset = require("./model/assest");
 const Department = require("./model/department");
 const Allocation = require("./model/allocation");
+const Employee = require("./model/employee");
+//const Booking = require("./model/booking");
+
 
 main()
 .then(()=>{
@@ -130,9 +133,89 @@ app.delete("/allocations/:id", async (req, res) => {
     res.redirect("/allocations");
 
 });
+app.get("/dashboard", async (req, res) => {
 
+    try{
+
+        const totalAssets = await Asset.countDocuments();
+
+        const totalEmployees = await Employee.countDocuments();
+
+        const totalDepartments = await Department.countDocuments();
+
+        const totalAllocations = await Allocation.countDocuments();
+
+       // const totalBookings = await Booking.countDocuments();
+
+        const availableAssets = await Asset.countDocuments({
+            status:"Available"
+        });
+
+        const allocatedAssets = await Asset.countDocuments({
+            status:"Allocated"
+        });
+
+        const recentAssets = await Asset.find({})
+        .sort({_id:-1})
+        .limit(5);
+
+        const recentEmployees = await Employee.find({})
+        .sort({_id:-1})
+        .limit(5);
+
+        // const recentBookings = await Booking.find({})
+        // .sort({_id:-1})
+        // .limit(5);
+
+        res.render("dashboard/index",{
+
+            totalAssets,
+
+            totalEmployees,
+
+            totalDepartments,
+
+            totalAllocations,
+
+            //totalBookings,
+
+            availableAssets,
+
+            allocatedAssets,
+
+           recentAssets,
+
+            recentEmployees,
+
+           // recentBookings
+
+        });
+
+    }
+    catch(err){
+
+        console.log(err);
+
+    }
+
+});
+// app.get("/maintenance",(req,res)=>{
+//     res.send("Maintenance Page");
+// });
+
+// app.get("/audit",(req,res)=>{
+//     res.send("Audit Page");
+// });
+
+// app.get("/reports",(req,res)=>{
+//     res.send("Reports Page");
+// });
+
+// app.get("/settings",(req,res)=>{
+//     res.send("Settings Page");
+// });
 app.get("/",(req,res)=>{
-  res.send("Home");
+  res.redirect("/dashboard");
 })
 
 app.listen(8080,()=>{

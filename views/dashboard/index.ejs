@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard</title>
+
+    <link rel="stylesheet" href="/css/dashboard.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+<body>
+<%- include("../includes/slidebar") %>
+<div class="dashboard">
+
+    <%- include("../includes/slidebar") %>
+
+    <div class="main-content">
+
+        <%- include("../includes/navbar") %>
+
+        <div class="container-fluid">
+
+            <div class="welcome">
+
+                <h2>Welcome Back 👋</h2>
+
+                <p>Asset Management Dashboard</p>
+
+            </div>
+
+            <div class="row g-4">
+
+                <div class="col-lg-3 col-md-6">
+
+                    <div class="card dashboard-card">
+
+                        <i class="fa-solid fa-laptop"></i>
+
+                        <h5>Total Assets</h5>
+
+                        <h2><%= totalAssets %></h2>
+
+                    </div>
+
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+
+                    <div class="card dashboard-card">
+
+                        <i class="fa-solid fa-users"></i>
+
+                        <h5>Employees</h5>
+
+                        <h2><%= totalEmployees %></h2>
+
+                    </div>
+
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+
+                    <div class="card dashboard-card">
+
+                        <i class="fa-solid fa-building"></i>
+
+                        <h5>Departments</h5>
+
+                        <h2><%= totalDepartments %></h2>
+
+                    </div>
+
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+
+                    <div class="card dashboard-card">
+
+                        <i class="fa-solid fa-share-from-square"></i>
+
+                        <h5>Allocations</h5>
+
+                        <h2><%= totalAllocations %></h2>
+
+                    </div>
+
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+
+                    <div class="card dashboard-card">
+
+                        <i class="fa-solid fa-bookmark"></i>
+
+                        <h5>Bookings</h5>
+
+              
+
+                    </div>
+
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+
+                    <div class="card dashboard-card">
+
+                        <i class="fa-solid fa-circle-check"></i>
+
+                        <h5>Available</h5>
+
+                        <h2><%= availableAssets %></h2>
+
+                    </div>
+
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+
+                    <div class="card dashboard-card">
+
+                        <i class="fa-solid fa-clock"></i>
+
+                        <h5>Allocated</h5>
+
+                        <h2><%= allocatedAssets %></h2>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <br>
+
+            <div class="card shadow">
+
+                <div class="card-header">
+
+                    <h4>Recent Assets</h4>
+
+                </div>
+
+                <table class="table table-hover">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Asset</th>
+
+                            <th>Category</th>
+
+                            <th>Status</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                    <% recentAssets.forEach(asset=>{ %>
+
+                        <tr>
+
+                            <td><%= asset.assetName %></td>
+
+                            <td><%= asset.category %></td>
+
+                            <td><%= asset.status %></td>
+
+                        </tr>
+
+                    <% }) %>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+            <br>
+
+            <div class="row">
+
+                <div class="col-lg-6">
+
+                    <div class="card shadow">
+
+                        <div class="card-header">
+
+                            <h4>Recent Employees</h4>
+
+                        </div>
+
+                        <table class="table">
+
+                            <thead>
+
+                            <tr>
+
+                                <th>Name</th>
+
+                                <th>Department</th>
+
+                            </tr>
+
+                            </thead>
+
+                            <tbody>
+
+                            <% recentEmployees.forEach(emp=>{ %>
+
+                            <tr>
+
+                                <td><%= emp.employeeName %></td>
+
+                                <td><%= emp.department %></td>
+
+                            </tr>
+
+                            <% }) %>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+                <div class="col-lg-6">
+
+                    <div class="card shadow">
+
+                        <div class="card-header">
+
+                            <h4>Recent Bookings</h4>
+
+                        </div>
+
+                        <table class="table">
+
+                            <thead>
+
+                            <tr>
+
+                                <th>Employee</th>
+
+                                <th>Purpose</th>
+
+                            </tr>
+
+                            </thead>
+
+                            <tbody>
+<!-- 
+                            <%// recentBookings.forEach(booking=>{ %>
+
+                            <tr>
+
+                                <td><%= //booking.employee %></td>
+
+                                <td><%=// booking.purpose %></td>
+
+                            </tr>
+
+                            <%// }) %> -->
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script src="/js/dashboard.js"></script>
+</body>
+
+</html>
