@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>New Maintenance</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#F4F2FF;
+}
+
+.container{
+width:650px;
+margin:40px auto;
+background:white;
+padding:30px;
+border-radius:12px;
+box-shadow:0 5px 15px rgba(0,0,0,.15);
+}
+
+h1{
+text-align:center;
+color:#6C63FF;
+margin-bottom:25px;
+}
+
+.form-group{
+margin-bottom:18px;
+}
+
+label{
+display:block;
+font-weight:bold;
+margin-bottom:8px;
+}
+
+input,
+select,
+textarea{
+width:100%;
+padding:12px;
+border:1px solid #ccc;
+border-radius:8px;
+font-size:15px;
+}
+
+textarea{
+height:120px;
+resize:none;
+}
+
+button{
+width:100%;
+padding:14px;
+background:#6C63FF;
+color:white;
+border:none;
+border-radius:8px;
+font-size:16px;
+cursor:pointer;
+}
+
+button:hover{
+background:#574bdb;
+}
+
+.back{
+display:inline-block;
+margin-top:20px;
+text-decoration:none;
+color:#6C63FF;
+font-weight:bold;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Create Maintenance Request</h1>
+
+<form action="/maintenances" method="POST">
+
+<div class="form-group">
+<label>Asset Name</label>
+<input
+type="text"
+name="maintenance[assetName]"
+placeholder="Enter Asset Name"
+required>
+</div>
+
+<div class="form-group">
+<label>Issue</label>
+<input
+type="text"
+name="maintenance[issue]"
+placeholder="Enter Issue"
+required>
+</div>
+
+<div class="form-group">
+<label>Description</label>
+<textarea
+name="maintenance[description]"
+placeholder="Describe the issue"
+required></textarea>
+</div>
+
+<div class="form-group">
+<label>Priority</label>
+<select name="maintenance[priority]">
+<option value="Low">Low</option>
+<option value="Medium" selected>Medium</option>
+<option value="High">High</option>
+</select>
+</div>
+
+<div class="form-group">
+<label>Status</label>
+<select name="maintenance[status]">
+<option value="Pending" selected>Pending</option>
+<option value="In Progress">In Progress</option>
+<option value="Completed">Completed</option>
+</select>
+</div>
+
+<div class="form-group">
+<label>Assigned To</label>
+<input
+type="text"
+name="maintenance[assignedTo]"
+placeholder="Technician Name"
+required>
+</div>
+
+<div class="form-group">
+<label>Maintenance Date</label>
+<input
+type="date"
+name="maintenance[maintenanceDate]"
+required>
+</div>
+
+<button type="submit">
+Create Maintenance
+</button>
+
+</form>
+
+<a href="/maintenances" class="back">
+← Back to Maintenance List
+</a>
+
+</div>
+
+</body>
+</html>

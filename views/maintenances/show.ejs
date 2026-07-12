@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Maintenance Details</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#F4F2FF;
+}
+
+.container{
+
+width:700px;
+margin:40px auto;
+background:white;
+padding:30px;
+border-radius:12px;
+box-shadow:0 5px 15px rgba(0,0,0,.15);
+
+}
+
+h1{
+
+text-align:center;
+color:#6C63FF;
+margin-bottom:30px;
+
+}
+
+.card{
+
+border:1px solid #ddd;
+border-radius:10px;
+padding:20px;
+
+}
+
+.row{
+
+display:flex;
+justify-content:space-between;
+padding:12px 0;
+border-bottom:1px solid #eee;
+
+}
+
+.row:last-child{
+
+border-bottom:none;
+
+}
+
+.title{
+
+font-weight:bold;
+color:#555;
+
+}
+
+.value{
+
+color:#222;
+
+}
+
+.status{
+
+padding:6px 14px;
+border-radius:20px;
+color:white;
+font-size:14px;
+
+}
+
+.pending{
+
+background:#f59e0b;
+
+}
+
+.progress{
+
+background:#3b82f6;
+
+}
+
+.completed{
+
+background:#10b981;
+
+}
+
+.buttons{
+
+margin-top:30px;
+display:flex;
+justify-content:space-between;
+
+}
+
+.btn{
+
+padding:12px 22px;
+text-decoration:none;
+border-radius:8px;
+color:white;
+
+}
+
+.back{
+
+background:#6C63FF;
+
+}
+
+.edit{
+
+background:#2563eb;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Maintenance Details</h1>
+
+<div class="card">
+
+<div class="row">
+
+<div class="title">Asset Name</div>
+
+<div class="value">
+
+<%= maintenance.assetName %>
+
+</div>
+
+</div>
+
+<div class="row">
+
+<div class="title">Issue</div>
+
+<div class="value">
+
+<%= maintenance.issue %>
+
+</div>
+
+</div>
+
+<div class="row">
+
+<div class="title">Description</div>
+
+<div class="value">
+
+<%= maintenance.description %>
+
+</div>
+
+</div>
+
+<div class="row">
+
+<div class="title">Priority</div>
+
+<div class="value">
+
+<%= maintenance.priority %>
+
+</div>
+
+</div>
+
+<div class="row">
+
+<div class="title">Assigned To</div>
+
+<div class="value">
+
+<%= maintenance.assignedTo %>
+
+</div>
+
+</div>
+
+<div class="row">
+
+<div class="title">Maintenance Date</div>
+
+<div class="value">
+
+<%= maintenance.maintenanceDate.toDateString() %>
+
+</div>
+
+</div>
+
+<div class="row">
+
+<div class="title">Status</div>
+
+<div class="value">
+
+<% if(maintenance.status==="Pending"){ %>
+
+<span class="status pending">
+
+Pending
+
+</span>
+
+<% } %>
+
+<% if(maintenance.status==="In Progress"){ %>
+
+<span class="status progress">
+
+In Progress
+
+</span>
+
+<% } %>
+
+<% if(maintenance.status==="Completed"){ %>
+
+<span class="status completed">
+
+Completed
+
+</span>
+
+<% } %>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="buttons">
+
+<a
+href="/maintenances"
+class="btn back">
+
+Back
+
+</a>
+
+<a
+href="/maintenances/<%= maintenance._id %>/edit"
+class="btn edit">
+
+Edit
+
+</a>
+
+</div>
+
+</div>
+
+</body>
+</html>
