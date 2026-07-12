@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Edit Maintenance</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#F4F2FF;
+}
+
+.container{
+
+width:650px;
+margin:40px auto;
+background:white;
+padding:30px;
+border-radius:12px;
+box-shadow:0 5px 15px rgba(0,0,0,.15);
+
+}
+
+h1{
+
+text-align:center;
+color:#6C63FF;
+margin-bottom:30px;
+
+}
+
+.form-group{
+
+margin-bottom:18px;
+
+}
+
+label{
+
+display:block;
+font-weight:bold;
+margin-bottom:8px;
+
+}
+
+input,
+select,
+textarea{
+
+width:100%;
+padding:12px;
+border:1px solid #ccc;
+border-radius:8px;
+font-size:15px;
+
+}
+
+textarea{
+
+height:120px;
+resize:none;
+
+}
+
+button{
+
+width:100%;
+padding:15px;
+background:#6C63FF;
+color:white;
+border:none;
+border-radius:8px;
+font-size:17px;
+cursor:pointer;
+
+}
+
+button:hover{
+
+background:#564fd8;
+
+}
+
+.back{
+
+display:inline-block;
+margin-top:20px;
+text-decoration:none;
+color:#6C63FF;
+font-weight:bold;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Edit Maintenance</h1>
+
+<form
+action="/maintenances/<%= maintenance._id %>?_method=PUT"
+method="POST">
+
+<div class="form-group">
+
+<label>Asset Name</label>
+
+<input
+type="text"
+name="maintenance[assetName]"
+value="<%= maintenance.assetName %>"
+required>
+
+</div>
+
+<div class="form-group">
+
+<label>Issue</label>
+
+<input
+type="text"
+name="maintenance[issue]"
+value="<%= maintenance.issue %>"
+required>
+
+</div>
+
+<div class="form-group">
+
+<label>Description</label>
+
+<textarea
+name="maintenance[description]"
+required><%= maintenance.description %></textarea>
+
+</div>
+
+<div class="form-group">
+
+<label>Priority</label>
+
+<select name="maintenance[priority]">
+
+<option value="Low"
+<%= maintenance.priority==="Low"?"selected":"" %>>
+Low
+</option>
+
+<option value="Medium"
+<%= maintenance.priority==="Medium"?"selected":"" %>>
+Medium
+</option>
+
+<option value="High"
+<%= maintenance.priority==="High"?"selected":"" %>>
+High
+</option>
+
+</select>
+
+</div>
+
+<div class="form-group">
+
+<label>Status</label>
+
+<select name="maintenance[status]">
+
+<option value="Pending"
+<%= maintenance.status==="Pending"?"selected":"" %>>
+Pending
+</option>
+
+<option value="In Progress"
+<%= maintenance.status==="In Progress"?"selected":"" %>>
+In Progress
+</option>
+
+<option value="Completed"
+<%= maintenance.status==="Completed"?"selected":"" %>>
+Completed
+</option>
+
+</select>
+
+</div>
+
+<div class="form-group">
+
+<label>Assigned To</label>
+
+<input
+type="text"
+name="maintenance[assignedTo]"
+value="<%= maintenance.assignedTo %>"
+required>
+
+</div>
+
+<div class="form-group">
+
+<label>Maintenance Date</label>
+
+<input
+type="date"
+name="maintenance[maintenanceDate]"
+value="<%= maintenance.maintenanceDate.toISOString().split('T')[0] %>"
+required>
+
+</div>
+
+<button type="submit">
+
+Update Maintenance
+
+</button>
+
+</form>
+
+<a
+href="/maintenances"
+class="back">
+
+← Back to Maintenance List
+
+</a>
+
+</div>
+
+</body>
+</html>

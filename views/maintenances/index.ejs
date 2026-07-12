@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Maintenance Requests</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#F4F2FF;
+}
+
+.container{
+width:95%;
+margin:30px auto;
+}
+
+.header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:25px;
+}
+
+.header h1{
+color:#6C63FF;
+}
+
+.btn{
+text-decoration:none;
+background:#6C63FF;
+color:white;
+padding:12px 20px;
+border-radius:8px;
+font-weight:bold;
+}
+
+.btn:hover{
+background:#564fd8;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+background:white;
+box-shadow:0 5px 12px rgba(0,0,0,.15);
+border-radius:10px;
+overflow:hidden;
+}
+
+th{
+background:#6C63FF;
+color:white;
+padding:15px;
+}
+
+td{
+padding:15px;
+text-align:center;
+border-bottom:1px solid #eee;
+}
+
+tr:hover{
+background:#f7f5ff;
+}
+
+.action-btn{
+padding:8px 14px;
+border:none;
+border-radius:6px;
+color:white;
+text-decoration:none;
+font-size:14px;
+cursor:pointer;
+}
+
+.view{
+background:#3B82F6;
+}
+
+.edit{
+background:#F59E0B;
+}
+
+.delete{
+background:#EF4444;
+}
+
+.status{
+padding:6px 12px;
+border-radius:20px;
+color:white;
+font-size:13px;
+font-weight:bold;
+}
+
+.pending{
+background:#f59e0b;
+}
+
+.progress{
+background:#3b82f6;
+}
+
+.completed{
+background:#10b981;
+}
+
+form{
+display:inline;
+}
+
+button{
+border:none;
+cursor:pointer;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="header">
+
+<h1>Maintenance Requests</h1>
+
+<a
+href="/maintenances/new"
+class="btn">
+
++ New Request
+
+</a>
+
+</div>
+
+<table>
+
+<tr>
+
+<th>Asset</th>
+
+<th>Issue</th>
+
+<th>Priority</th>
+
+<th>Assigned To</th>
+
+<th>Date</th>
+
+<th>Status</th>
+
+<th>Action</th>
+
+</tr>
+
+<% maintenances.forEach((maintenance)=>{ %>
+
+<tr>
+
+<td><%= maintenance.assetName %></td>
+
+<td><%= maintenance.issue %></td>
+
+<td><%= maintenance.priority %></td>
+
+<td><%= maintenance.assignedTo %></td>
+
+<td><%= maintenance.maintenanceDate.toDateString() %></td>
+
+<td>
+
+<% if(maintenance.status==="Pending"){ %>
+
+<span class="status pending">
+Pending
+</span>
+
+<% } %>
+
+<% if(maintenance.status==="In Progress"){ %>
+
+<span class="status progress">
+In Progress
+</span>
+
+<% } %>
+
+<% if(maintenance.status==="Completed"){ %>
+
+<span class="status completed">
+Completed
+</span>
+
+<% } %>
+
+</td>
+
+<td>
+
+<a
+href="/maintenances/<%= maintenance._id %>"
+class="action-btn view">
+
+View
+
+</a>
+
+<a
+href="/maintenances/<%= maintenance._id %>/edit"
+class="action-btn edit">
+
+Edit
+
+</a>
+
+<form
+action="/maintenances/<%= maintenance._id %>?_method=DELETE"
+method="POST">
+
+<button
+class="action-btn delete">
+
+Delete
+
+</button>
+
+</form>
+
+</td>
+
+</tr>
+
+<% }) %>
+
+</table>
+
+</div>
+
+</body>
+</html>

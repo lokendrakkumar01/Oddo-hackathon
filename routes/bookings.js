@@ -66,7 +66,7 @@ router.put("/:id", async (req, res) => {
     await Booking.findByIdAndUpdate(
         req.params.id,
         req.body.booking,
-        { new: true }
+       { returnDocument: "after" }
     );
 
     res.redirect("/bookings/" + req.params.id);
