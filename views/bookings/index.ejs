@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Bookings</title>
+
+<link rel="stylesheet" href="/styles.css">
+
+<style>
+
+body{
+    margin:0;
+    font-family:Arial, Helvetica, sans-serif;
+    background:#f5f3ff;
+}
+
+.container{
+    width:90%;
+    margin:auto;
+    margin-top:30px;
+}
+
+.heading{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.heading h1{
+    color:#6C63FF;
+}
+
+.btn{
+
+    background:#6C63FF;
+    color:white;
+    text-decoration:none;
+    padding:12px 18px;
+    border-radius:8px;
+
+}
+
+table{
+
+    width:100%;
+    margin-top:30px;
+    border-collapse:collapse;
+    background:white;
+
+}
+
+th{
+
+    background:#6C63FF;
+    color:white;
+    padding:15px;
+
+}
+
+td{
+
+    text-align:center;
+    padding:15px;
+    border-bottom:1px solid #ddd;
+
+}
+
+.action-btn{
+
+    text-decoration:none;
+    padding:8px 12px;
+    border-radius:6px;
+    color:white;
+
+}
+
+.view{
+
+    background:#3b82f6;
+
+}
+
+.edit{
+
+    background:#f59e0b;
+
+}
+
+.delete{
+
+    background:#ef4444;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="heading">
+
+<h1>Resource Bookings</h1>
+
+<a href="/bookings/new" class="btn">
+
++ New Booking
+
+</a>
+
+</div>
+
+<table>
+
+<tr>
+
+<th>Employee</th>
+
+<th>Resource</th>
+
+<th>Date</th>
+
+<th>Status</th>
+
+<th>Action</th>
+
+</tr>
+
+<% allBookings.forEach((booking)=>{ %>
+
+<tr>
+
+<td><%= booking.employeeName %></td>
+
+<td><%= booking.resourceName %></td>
+
+<td><%= booking.bookingDate.toDateString() %></td>
+
+<td><%= booking.status %></td>
+
+<td>
+
+<a class="action-btn view"
+href="/bookings/<%= booking._id %>">
+
+View
+
+</a>
+
+<a class="action-btn edit"
+href="/bookings/<%= booking._id %>/edit">
+
+Edit
+
+</a>
+
+<form
+action="/bookings/<%= booking._id %>?_method=DELETE"
+method="POST"
+style="display:inline;">
+
+<button class="action-btn delete">
+
+Delete
+
+</button>
+
+</form>
+
+</td>
+
+</tr>
+
+<% }) %>
+
+</table>
+
+</div>
+
+</body>
+</html>

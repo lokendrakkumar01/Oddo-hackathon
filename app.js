@@ -5,6 +5,10 @@ const mongoose = require("mongoose");
 const Asset = require("./model/assest");
 const Department = require("./model/department");
 const Allocation = require("./model/allocation");
+const methodOverride = require("method-override");
+const bookingRoutes = require("./routes/bookings");
+
+
 
 main()
 .then(()=>{
@@ -20,9 +24,12 @@ async function main(){
 
 app.set("view engine","ejs");
 app.set("views",path.join(__dirname,"views"));
-
 app.use(express.urlencoded({extended: true}));
+app.use(express.json());
 app.use(express.static(path.join(__dirname,"public")));
+app.use(methodOverride("_method"));
+app.use("/bookings", bookingRoutes);
+
 
 app.get("/assets", async (req,res)=>{
   const assets = await Asset.find();
