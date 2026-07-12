@@ -1,0 +1,57 @@
+<h1>Edit Allocation</h1>
+
+<form
+action="/allocations/<%= allocation._id %>?_method=PUT"
+method="POST">
+
+<input
+type="text"
+name="allocation[employee]"
+value="<%= allocation.employee %>">
+
+<br><br>
+
+<input
+type="text"
+name="allocation[asset]"
+value="<%= allocation.asset %>">
+
+<br><br>
+
+<input
+type="date"
+name="allocation[allocatedDate]"
+value="<%= allocation.allocatedDate.toISOString().split('T')[0] %>">
+
+<br><br>
+
+<input
+type="date"
+name="allocation[returnDate]"
+value="<%= allocation.returnDate ? allocation.returnDate.toISOString().split('T')[0] : '' %>">
+
+<br><br>
+
+<select name="allocation[status]">
+
+<option value="Allocated"
+<%= allocation.status==="Allocated" ? "selected" : "" %>>
+Allocated
+</option>
+
+<option value="Returned"
+<%= allocation.status==="Returned" ? "selected" : "" %>>
+Returned
+</option>
+
+</select>
+
+<br><br>
+
+<button>
+
+Update Allocation
+
+</button>
+
+</form>

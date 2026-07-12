@@ -1,0 +1,61 @@
+<h1>Asset Allocation</h1>
+
+<a href="/allocations/new">Allocate Asset</a>
+
+<table border="1">
+
+<tr>
+
+<th>Employee</th>
+
+<th>Asset</th>
+
+<th>Allocated Date</th>
+
+<th>Return Date</th>
+
+<th>Status</th>
+
+<th>Action</th>
+
+</tr>
+
+<% allocations.forEach(allocation=>{ %>
+
+<tr>
+
+<td><%= allocation.employee %></td>
+
+<td><%= allocation.asset %></td>
+
+<td><%= allocation.allocatedDate.toDateString() %></td>
+
+<td>
+
+<% if(allocation.returnDate){ %>
+
+<%= allocation.returnDate.toDateString() %>
+
+<% } else { %>
+
+Not Returned
+
+<% } %>
+
+</td>
+
+<td><%= allocation.status %></td>
+
+<td>
+
+<a href="/allocations/<%= allocation._id %>">View</a>
+
+<a href="/allocations/<%= allocation._id %>/edit">Edit</a>
+
+</td>
+
+</tr>
+
+<% }) %>
+
+</table>

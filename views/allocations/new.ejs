@@ -1,0 +1,47 @@
+<h1>Allocate Asset</h1>
+
+<form action="/allocations" method="POST">
+
+<input
+type="text"
+name="allocation[employee]"
+placeholder="Employee Name">
+
+<br><br>
+
+<input
+type="text"
+name="allocation[asset]"
+placeholder="Asset Name">
+
+<br><br>
+
+<label>Allocation Date</label>
+
+<input
+type="date"
+name="allocation[allocatedDate]">
+
+<br><br>
+
+<label>Return Date</label>
+
+<input
+type="date"
+name="allocation[returnDate]">
+
+<br><br>
+
+<select name="allocation[status]">
+
+<option>Allocated</option>
+
+<option>Returned</option>
+
+</select>
+
+<br><br>
+
+<button>Allocate Asset</button>
+
+</form>

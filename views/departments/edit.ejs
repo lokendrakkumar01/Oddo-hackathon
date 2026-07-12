@@ -1,0 +1,35 @@
+<h1>Edit Department</h1>
+
+<form
+action="/departments/<%= department._id %>?_method=PUT"
+method="POST">
+
+<input
+type="text"
+name="department[departmentName]"
+value="<%= department.departmentName %>">
+
+<br><br>
+
+<input
+type="text"
+name="department[departmentHead]"
+value="<%= department.departmentHead %>">
+
+<br><br>
+
+<input
+type="text"
+name="department[location]"
+value="<%= department.location %>">
+
+<br><br>
+
+<textarea
+name="department[description]"><%= department.description %></textarea>
+
+<br><br>
+
+<button>Update Department</button>
+
+</form>

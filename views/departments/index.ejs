@@ -1,0 +1,41 @@
+<h1>Departments</h1>
+
+<a href="/departments/new">Add Department</a>
+
+<table border="1">
+
+<tr>
+
+<th>Name</th>
+<th>Head</th>
+<th>Location</th>
+<th>Description</th>
+<th>Action</th>
+
+</tr>
+
+<% departments.forEach(department => { %>
+
+<tr>
+
+<td><%= department.departmentName %></td>
+
+<td><%= department.departmentHead %></td>
+
+<td><%= department.location %></td>
+
+<td><%= department.description %></td>
+
+<td>
+
+<a href="/departments/<%= department._id %>">View</a>
+
+<a href="/departments/<%= department._id %>/edit">Edit</a>
+
+</td>
+
+</tr>
+
+<% }) %>
+
+</table>

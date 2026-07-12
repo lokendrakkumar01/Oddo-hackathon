@@ -1,0 +1,19 @@
+<h1>Edit Employee</h1>
+
+<form action="/employees/<%= employee._id %>?_method=PUT" method="POST">
+
+    <input type="text" name="employee[employeeId]" value="<%= employee.employeeId %>">
+
+    <input type="text" name="employee[name]" value="<%= employee.name %>">
+
+    <input type="text" name="employee[department]" value="<%= employee.department %>">
+
+    <input type="email" name="employee[email]" value="<%= employee.email %>">
+
+    <input type="text" name="employee[phone]" value="<%= employee.phone %>">
+
+    <input type="text" name="employee[designation]" value="<%= employee.designation %>">
+
+    <button>Update Employee</button>
+
+</form>
