@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Create Booking</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+body{
+    background:#F4F2FF;
+}
+.container{
+    width:600px;
+    margin:40px auto;
+    background:#fff;
+    padding:30px;
+    border-radius:12px;
+    box-shadow:0 5px 15px rgba(0,0,0,.15);
+}
+h1{
+    text-align:center;
+    color:#6C63FF;
+    margin-bottom:25px;
+}
+.form-group{
+    margin-bottom:18px;
+}
+label{
+    display:block;
+    margin-bottom:8px;
+    font-weight:bold;
+}
+input,
+select,
+textarea{
+    width:100%;
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:8px;
+}
+textarea{
+    height:100px;
+}
+button{
+    width:100%;
+    padding:14px;
+    background:#6C63FF;
+    color:white;
+    border:none;
+    border-radius:8px;
+    font-size:16px;
+    cursor:pointer;
+}
+button:hover{
+    background:#5649e0;
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+<h1>Create Booking</h1>
+
+<form action="/bookings" method="POST">
+
+<div class="form-group">
+<label>Employee Name</label>
+<input
+type="text"
+name="booking[employeeName]"
+required>
+</div>
+
+<div class="form-group">
+<label>Resource</label>
+<select name="booking[resourceName]">
+<option value="Conference Room A">Conference Room A</option>
+<option value="Conference Room B">Conference Room B</option>
+<option value="Laptop">Laptop</option>
+<option value="Projector">Projector</option>
+<option value="Vehicle">Vehicle</option>
+</select>
+</div>
+
+<div class="form-group">
+<label>Booking Date</label>
+<input
+type="date"
+name="booking[bookingDate]"
+required>
+</div>
+
+<div class="form-group">
+<label>Start Time</label>
+<input
+type="time"
+name="booking[startTime]"
+required>
+</div>
+
+<div class="form-group">
+<label>End Time</label>
+<input
+type="time"
+name="booking[endTime]"
+required>
+</div>
+
+<div class="form-group">
+<label>Purpose</label>
+<textarea
+name="booking[purpose]"
+required></textarea>
+</div>
+
+<div class="form-group">
+<label>Status</label>
+<select name="booking[status]">
+<option value="Upcoming">Upcoming</option>
+<option value="Approved">Approved</option>
+<option value="Completed">Completed</option>
+<option value="Cancelled">Cancelled</option>
+</select>
+</div>
+
+<button type="submit">
+Create Booking
+</button>
+
+</form>
+
+</div>
+
+</body>
+</html>

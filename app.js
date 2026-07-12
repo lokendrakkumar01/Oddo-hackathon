@@ -5,8 +5,13 @@ const mongoose = require("mongoose");
 const Asset = require("./model/assest");
 const Department = require("./model/department");
 const Allocation = require("./model/allocation");
+
 const Employee = require("./model/employee");
-//const Booking = require("./model/booking");
+const Booking = require("./model/booking");
+
+const methodOverride = require("method-override");
+const bookingRoutes = require("./routes/bookings");
+
 
 
 main()
@@ -23,9 +28,12 @@ async function main(){
 
 app.set("view engine","ejs");
 app.set("views",path.join(__dirname,"views"));
-
 app.use(express.urlencoded({extended: true}));
+app.use(express.json());
 app.use(express.static(path.join(__dirname,"public")));
+app.use(methodOverride("_method"));
+app.use("/bookings", bookingRoutes);
+
 
 app.get("/assets", async (req,res)=>{
   const assets = await Asset.find();
@@ -76,8 +84,9 @@ app.delete("/departments/:id", async (req, res) => {
     res.redirect("/departments");
 
 });
-app.get("/employees",(req,res)=>{
-  res.render("employees/index");
+app.get("/employees",async (req,res)=>{
+  const employees = await Employee.find();
+  res.render("employees/index",{employees});
 })
 
 app.get("/allocations", async (req, res) => {
@@ -145,7 +154,7 @@ app.get("/dashboard", async (req, res) => {
 
         const totalAllocations = await Allocation.countDocuments();
 
-       // const totalBookings = await Booking.countDocuments();
+        const totalBookings = await Booking.countDocuments();
 
         const availableAssets = await Asset.countDocuments({
             status:"Available"
@@ -163,9 +172,9 @@ app.get("/dashboard", async (req, res) => {
         .sort({_id:-1})
         .limit(5);
 
-        // const recentBookings = await Booking.find({})
-        // .sort({_id:-1})
-        // .limit(5);
+        const recentBookings = await Booking.find({})
+        .sort({_id:-1})
+        .limit(5);
 
         res.render("dashboard/index",{
 
@@ -177,7 +186,7 @@ app.get("/dashboard", async (req, res) => {
 
             totalAllocations,
 
-            //totalBookings,
+            totalBookings,
 
             availableAssets,
 
@@ -187,7 +196,7 @@ app.get("/dashboard", async (req, res) => {
 
             recentEmployees,
 
-           // recentBookings
+            recentBookings
 
         });
 
